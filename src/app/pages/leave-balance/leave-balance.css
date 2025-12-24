@@ -1,0 +1,16 @@
+.table th {
+  white-space: nowrap;
+}
+
+.badge {
+  font-size: 0.85rem;
+}
+
+.modal-header {
+  border-bottom: none;
+}
+
+.card-header {
+  background: #fff;
+}
+
