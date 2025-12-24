@@ -1,0 +1,48 @@
+<div class="container min-vh-100 d-flex align-items-center justify-content-center">
+  <div class="login-card shadow-lg">
+    <div class="text-center mb-4">
+      <i class="fa fa-user-circle login-icon"></i>
+      <h4 class="mt-2 text-warning fw-bold">Login</h4>
+      <small class="text-muted">Welcome back! Please login</small>
+    </div>
+
+    <form [formGroup]="loginForm">
+      <!-- Username -->
+      <div class="mb-3">
+        <label class="form-label">Username</label>
+        <div class="input-group">
+          <span class="input-group-text bg-warning text-white">
+            <i class="fa fa-user"></i>
+          </span>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter username"
+            formControlName='userName'
+          />
+        </div>
+      </div>
+
+      <!-- Password -->
+      <div class="mb-4">
+        <label class="form-label">Password</label>
+        <div class="input-group">
+          <span class="input-group-text bg-warning text-white">
+            <i class="fa fa-lock"></i>
+          </span>
+          <input
+            type="password"
+            class="form-control"
+            placeholder="Enter password"
+            formControlName='password'
+          />
+        </div>
+      </div>
+
+      <!-- Button -->
+      <button class="btn btn-primary w-100 fw-semibold" (click)="onSubmit()">
+        <i class="fa fa-sign-in me-1"></i> Login
+      </button>
+    </form>
+  </div>
+</div>
