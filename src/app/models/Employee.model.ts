@@ -48,3 +48,8 @@ export interface IApiResponseModel{
     message: string;
     data:any;
 }
+
+export interface ILoginModel {
+    userName: string;
+    password: string;
+}
