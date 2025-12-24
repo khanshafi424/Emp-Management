@@ -1,0 +1,94 @@
+<div class="dashboard-layout">
+  <!-- Sidebar -->
+  <nav
+    class="sidebar bg-dark text-white"
+    [class.collapsed]="isCollapsed"
+  >
+    <!-- Header -->
+    <div class="sidebar-header">
+      <div class="d-flex align-items-center">
+        <i class="fa fa-user-circle fa-2x me-2"></i>
+        @if(!isCollapsed){
+          <span class="sidebar-title">Leave Admin</span>
+        }
+      </div>
+
+      <button
+        class="btn btn-sm btn-toggle"
+        (click)="toggle()"
+      >
+        <i
+          class="fa"
+          [ngClass]="{
+            'fa-angle-left': !isCollapsed,
+            'fa-angle-right': isCollapsed
+          }"
+        ></i>
+      </button>
+    </div>
+
+    <!-- Menu -->
+    <ul class="nav nav-pills flex-column sidebar-menu">
+
+     @if(isHR()){
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/" routerLinkActive="active">
+          <i class="fa fa-dashboard"></i>
+          @if(!isCollapsed){<span>Dashboard</span>}
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/employee" routerLinkActive="active">
+          <i class="fa fa-users"></i>
+          @if(!isCollapsed){<span>Employees</span>}
+        </a>
+      </li>
+       <li class="nav-item">
+        <a class="nav-link" routerLink="/balance" routerLinkActive="active">
+          <i class="fa fa-calendar"></i>
+          @if(!isCollapsed){<span>Leave Balance</span>}
+        </a>
+      </li>
+    }
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/leave-request" routerLinkActive="active">
+          <i class="fa fa-paper-plane"></i>
+          @if(!isCollapsed){<span>Leave Requests</span>}
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/settings" routerLinkActive="active">
+          <i class="fa fa-cog"></i>
+          @if(!isCollapsed){<span>Settings</span>}
+        </a>
+      </li>
+    </ul>
+
+    <!-- Footer -->
+    <div class="sidebar-footer">
+      @if(!isCollapsed){
+        <small class="text-muted">Signed in as</small>
+        <div class="fw-bold mb-2">
+           <i class="fa fa-user"></i>
+           {{ empName().toUpperCase() }}
+        </div>
+      }
+      <button class="btn btn-outline-light btn-sm w-100" (click)="logout()">
+        <i class="fa fa-sign-out me-1"></i>
+        @if(!isCollapsed){ Log out }
+      </button>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <header class="topbar">
+      <h5 class="mb-0">Dashboard</h5>
+    </header>
+
+    <main class="content-area">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>
