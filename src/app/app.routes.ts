@@ -25,7 +25,7 @@ export const routes: Routes = [
 
             },
             {
-                path:'balanec',
+                path:'balance',
                 component: LeaveBalance
 
             },
