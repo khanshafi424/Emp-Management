@@ -1,0 +1,19 @@
+/* Employee page styles */
+.card {
+	box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.05);
+}
+
+.table-responsive {
+	max-height: 58vh;
+	overflow: auto;
+}
+
+/* Make action buttons compact */
+.table .btn {
+	padding: 0.25rem 0.45rem;
+	font-size: 0.85rem;
+}
+
+@media (max-width: 767px) {
+	.table-responsive { max-height: 40vh; }
+}
