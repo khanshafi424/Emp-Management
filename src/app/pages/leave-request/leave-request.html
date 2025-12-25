@@ -1,1 +1,127 @@
-<p>leave-request works!</p>
+<div class="leave-request-container container-fluid">
+  <div class="row">
+    <!-- Left: data list (7 cols) -->
+    <div class="col-12 col-md-7">
+      <div class="card mb-3">
+        <div
+          class="card-header bg-warning text-dark d-flex justify-content-between align-items-center"
+        >
+          <span>Leave Requests</span>
+          <div class="header-actions">
+            <input
+              type="search"
+              class="form-control form-control-sm d-inline-block"
+              style="width: 220px"
+              placeholder="Search by emp or type"
+            />
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="leave-list" id="leaveList">
+            @for (leave of leaveRequests(); track leave.empId) {
+            <div
+              class="leave-row d-flex align-items-center p-2 mb-2 border rounded"
+              [attr.data-leave-id]="leave.balanceId"
+            >
+              <div class="col col-2">
+                Emp: <strong class="emp-id">{{ leave.empId }}</strong>
+              </div>
+
+              <div class="col col-2">
+                Type:
+                <span class="leave-type">{{ leave.leaveType }}</span>
+              </div>
+
+              <div class="col col-3">
+                From:
+                <span class="from-date">{{ leave.fromDate | date : 'dd/mm/yyyy' }}</span>
+              </div>
+
+              <div class="col col-2">
+                To:
+                <span class="from-to">{{ leave.toDate | date : 'dd/mm/yyyy' }}</span>
+              </div>
+
+              <div class="col col-3 text-end">
+                <button class="btn btn-sm btn-outline-primary me-1">Edit</button>
+                <button class="btn btn-sm btn-outline-danger">Delete</button>
+              </div>
+            </div>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: form (5 cols) -->
+    <div class="col-12 col-md-5">
+      <div class="card mb-3">
+        <div class="card-header bg-warning text-dark">Leave Request Form</div>
+        <div class="card-body">
+          <form>
+            <div class="form-row">
+              <div class="form-group col-6">
+                <label for="fromDate">From</label>
+                <input
+                  type="date"
+                  class="form-control"
+                  [(ngModel)]="leaveRequest.fromDate"
+                  name="fromDate"
+                />
+              </div>
+              <div class="form-group col-6">
+                <label for="toDate">To</label>
+                <input
+                  type="date"
+                  class="form-control"
+                  id="toDate"
+                  [(ngModel)]="leaveRequest.toDate"
+                  name="toDate"
+                />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Leave Type</label>
+              <select class="form-select" name="leaveType" [(ngModel)]="leaveRequest.leaveType">
+                <option value="" selected disabled>Select Leave Type</option>
+                <option value="sickLeave">Sick Leave</option>
+                <option value="paidLeave">Paid Leave</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="reason">Reason</label>
+              <textarea
+                class="form-control"
+                id="reason"
+                [(ngModel)]="leaveRequest.reason"
+                name="reason"
+                rows="3"
+                placeholder="Short reason"
+              ></textarea>
+            </div>
+
+            <div class="d-flex justify-content-center mt-2 gap-2">
+              <button
+                type="button"
+                (click)="reset()"
+                class="btn btn-secondary btn-sm"
+                id="btnReset"
+              >
+                Reset
+              </button>
+              <button
+                type="button"
+                (click)="onSubmit()"
+                class="btn btn-warning btn-sm"
+                id="btnSave"
+              >
+                Save
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

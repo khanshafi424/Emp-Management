@@ -1,0 +1,13 @@
+/* Styles for leave-request layout */
+.leave-request-container{padding:12px}
+.leave-list .leave-row{background:#fff}
+.leave-row .btn{margin-left:6px}
+
+/* small tweaks for card and header */
+.card-header.bg-warning{font-weight:600}
+
+@media (max-width:767px){
+	.leave-row{flex-direction:column;align-items:flex-start}
+	.leave-row .text-right{width:100%;text-align:left;margin-top:8px}
+}
+

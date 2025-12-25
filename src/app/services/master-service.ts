@@ -51,4 +51,13 @@ export class MasterService {
       leaveBalanceObj
     );
   }
-}
+
+  leaveRequest(leaveRequestObj: any) {
+    return this.http.post<any>("https://api.freeprojectapi.com/api/LeaveTracker/request", leaveRequestObj);
+  }
+
+  getLeaveRequestsByEmpId(empId: number) {
+    return this.http.get<any>("https://api.freeprojectapi.com/api/LeaveTracker/GetLeaveRequestsbyEmpId?empid=" + empId);  
+  }
+
+  }
